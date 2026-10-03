@@ -10,6 +10,11 @@
   <meta property="og:title" content="Sshree Shyam Rasoi Special | Rau, Indore" />
   <meta property="og:description" content="Pure vegetarian flavours, homestyle comfort and Indori favourites — crafted fresh in Rau, Indore." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://satitech-admin.github.io/Sshree-Shyam-Rasoi-Specia/" />
+  <link rel="canonical" href="https://satitech-admin.github.io/Sshree-Shyam-Rasoi-Specia/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23160b07'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23f0d49d' stroke-width='2'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-size='24' fill='%23f0d49d' font-family='serif'%3E%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23160b07'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='25' fill='%23f0d49d' font-family='serif'%3E%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://img.magicpin.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
@@ -63,6 +68,42 @@
     }
     .section-title{font-size:clamp(2.4rem,5vw,5.2rem);max-width:850px}
     .section-copy{font-size:1.02rem;line-height:1.8;color:var(--muted);max-width:650px}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+    .skip-link{position:fixed;left:12px;top:-80px;z-index:12000;background:#fff;color:#111;padding:12px 16px;border-radius:10px;transition:.2s}
+    .skip-link:focus{top:12px}
+    body.loading{overflow:hidden}
+
+    /* Loader */
+    .site-loader{
+      position:fixed;inset:0;z-index:11000;display:grid;place-items:center;
+      background:
+        radial-gradient(circle at 50% 42%,rgba(214,168,95,.11),transparent 30%),
+        linear-gradient(145deg,#0e0705,#1f0d08 58%,#120805);
+      color:#fff;transition:opacity .7s ease,visibility .7s ease;
+    }
+    .site-loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-wrap{text-align:center;display:grid;justify-items:center;gap:22px;padding:24px}
+    .loader-orbit{width:156px;height:156px;position:relative;display:grid;place-items:center}
+    .loader-orbit::before,.loader-orbit::after{
+      content:"";position:absolute;border-radius:50%;border:1px solid rgba(240,212,157,.33)
+    }
+    .loader-orbit::before{inset:0;border-top-color:var(--gold-soft);animation:loaderSpin 2.4s linear infinite}
+    .loader-orbit::after{inset:14px;border-left-color:var(--gold);animation:loaderSpin 1.7s linear infinite reverse}
+    .loader-logo{
+      width:104px;height:104px;border-radius:50%;display:grid;place-items:center;position:relative;
+      background:linear-gradient(145deg,#2b130c,#100705);border:1px solid rgba(240,212,157,.48);
+      color:var(--gold-soft);font-family:"Marcellus",serif;font-size:2rem;box-shadow:0 0 55px rgba(214,168,95,.16);
+      animation:logoPulse 1.65s ease-in-out infinite
+    }
+    .loader-logo::before,.loader-logo::after{content:"";position:absolute;border:1px solid currentColor;border-radius:50%;opacity:.25}
+    .loader-logo::before{inset:7px}.loader-logo::after{inset:15px}
+    .loader-name{font-family:"Marcellus",serif;font-size:1.45rem;letter-spacing:.02em}
+    .loader-sub{font-size:.67rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.52)}
+    .loader-line{width:150px;height:1px;background:rgba(255,255,255,.12);overflow:hidden;position:relative}
+    .loader-line::after{content:"";position:absolute;inset:0;width:45%;background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);animation:loaderSweep 1.35s ease-in-out infinite}
+    @keyframes loaderSpin{to{transform:rotate(360deg)}}
+    @keyframes logoPulse{50%{transform:scale(1.045);box-shadow:0 0 75px rgba(214,168,95,.26)}}
+    @keyframes loaderSweep{from{transform:translateX(-130%)}to{transform:translateX(300%)}}
 
     /* Header */
     .nav{
@@ -98,7 +139,17 @@
       border-radius:999px;font-weight:700;font-size:.82rem;
     }
     .nav.scrolled .nav-cta{border-color:var(--line);background:var(--ink);color:#fff}
-    .menu-btn{display:none;background:none;border:0;color:inherit;font-size:1.5rem}
+    .menu-btn{display:none;background:none;border:0;color:inherit;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer}
+    .mobile-menu{
+      position:fixed;inset:0;z-index:1050;background:rgba(14,7,5,.98);color:#fff;
+      display:grid;align-content:center;justify-items:center;gap:18px;
+      opacity:0;visibility:hidden;transform:translateY(-12px);transition:.3s ease
+    }
+    .mobile-menu.open{opacity:1;visibility:visible;transform:none}
+    .mobile-menu a{font-family:"Marcellus",serif;font-size:clamp(1.7rem,8vw,2.4rem)}
+    .mobile-menu .small-action{font-family:"DM Sans",sans-serif;font-size:.86rem;margin-top:8px;border:1px solid rgba(255,255,255,.25);padding:12px 18px;border-radius:999px}
+    .mobile-close{position:absolute;right:18px;top:16px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;font-size:1.5rem}
+    .mobile-dock{display:none}
 
     /* Hero */
     .hero{
@@ -109,20 +160,20 @@
     }
     .hero-media,.hero-slide,.hero-overlay{position:absolute;inset:0}
     .hero-slide{
-      background-size:cover;background-position:center;
+      background-size:cover;background-position:center;filter:saturate(.9) contrast(1.05);
       opacity:0;transform:scale(1.05);
       animation:heroCycle 18s infinite;
     }
     .hero-slide:nth-child(1){
-      background-image:url("https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=2200&q=88");
+      background-image:url("https://img.magicpin.com/9892553_store_images_4.webp");
       animation-delay:0s
     }
     .hero-slide:nth-child(2){
-      background-image:url("https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=2200&q=88");
+      background-image:url("https://img.magicpin.com/9892553_store_images_3.webp");
       animation-delay:6s
     }
     .hero-slide:nth-child(3){
-      background-image:url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=2200&q=88");
+      background-image:url("https://img.magicpin.com/9892553_store_images_2.webp");
       animation-delay:12s
     }
     @keyframes heroCycle{
@@ -234,6 +285,15 @@
     .dish p{font-size:.82rem;color:rgba(255,255,255,.63);line-height:1.5;margin:0}
     .menu-foot{display:flex;justify-content:center;margin-top:36px}
 
+    /* Trust strip */
+    .trust-strip{background:#fff7e9;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .trust-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .trust-item{padding:22px 26px;border-right:1px solid var(--line)}
+    .trust-item:last-child{border-right:0}
+    .trust-item small{display:block;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-size:.64rem;margin-bottom:6px}
+    .trust-item strong{font-family:"Marcellus",serif;font-size:1.1rem;font-weight:400}
+    .trust-item a{text-decoration:underline;text-underline-offset:4px}
+
     /* Experience */
     .experience{background:var(--paper)}
     .experience-head{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:end;margin-bottom:58px}
@@ -318,6 +378,9 @@
 
     @media(max-width:980px){
       .nav-links{display:none}
+      .trust-grid{grid-template-columns:1fr 1fr}
+      .trust-item:nth-child(2){border-right:0}
+      .trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
       .menu-btn{display:block}
       .hero-grid,.story-grid,.presence-grid,.location-grid,.experience-head{grid-template-columns:1fr}
       .hero-card{justify-self:start;margin-top:10px}
@@ -364,7 +427,40 @@
       .location-map,.location-map iframe{min-height:420px}
       .footer-grid{grid-template-columns:1fr}
       .footer-brand{grid-column:auto}
-      .whatsapp{width:54px;height:54px;right:14px;bottom:14px}
+      .whatsapp{display:none}
+      .mobile-dock{
+        position:fixed;left:10px;right:10px;bottom:10px;z-index:920;display:grid;grid-template-columns:repeat(4,1fr);
+        background:rgba(20,10,6,.93);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:18px;
+        backdrop-filter:blur(18px);box-shadow:0 16px 50px rgba(0,0,0,.28);overflow:hidden
+      }
+      .mobile-dock a{min-height:58px;display:grid;place-items:center;text-align:center;font-size:.68rem;line-height:1.15;padding:8px 5px;border-right:1px solid rgba(255,255,255,.08)}
+      .mobile-dock a:last-child{border-right:0}
+      .mobile-dock b{display:block;font-size:1.05rem;margin-bottom:3px}
+      footer{padding-bottom:100px}
+      .hero{min-height:100dvh}
+      .hero-copy{font-size:.96rem}
+      .hero-actions .btn{width:100%}
+      .hero-card{padding:22px}
+      .hero-facts{gap:12px}
+      .trust-grid{grid-template-columns:1fr}
+      .trust-item,.trust-item:nth-child(2){border-right:0;border-bottom:1px solid var(--line)}
+      .trust-item:last-child{border-bottom:0}
+      .menu-grid{gap:12px}
+      .dish{min-height:330px}
+      .service{padding:28px 24px}
+      .location-actions .btn{width:100%}
+    }
+    @media(max-width:390px){
+      .container{width:min(100% - 20px,1180px)}
+      .brand-text span{display:none}
+      .hero-title{font-size:3.25rem}
+      .hero-card-title{font-size:1.35rem}
+      .hero-facts{grid-template-columns:1fr}
+      .story-visual{min-height:410px}
+      .story-img-main{height:350px}
+      .story-img-small{height:190px}
+      .gallery-grid{grid-template-columns:1fr;grid-template-rows:320px repeat(4,210px)}
+      .gallery figure:first-child{grid-column:auto}
     }
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -386,12 +482,26 @@
     },
     "servesCuisine":["North Indian","Vegetarian","Indian"],
     "priceRange":"₹",
-    "openingHours":"Mo-Su 09:00-21:00",
-    "sameAs":["https://www.zomato.com/indore/sshree-shyam-rasoi-special-rau"]
+    "sameAs":[
+      "https://www.zomato.com/indore/sshree-shyam-rasoi-special-rau",
+      "https://www.swiggy.com/city/indore/sshree-shyam-rasoi-rau-and-rajendra-nagar-rest1371950",
+      "https://magicpin.in/Indore/Shramik-Colony/Restaurant/Sshree-Shyam-Rasoi-Special/store/20849a8"
+    ]
   }
   </script>
 </head>
-<body>
+<body class="loading">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-loader" id="siteLoader" role="status" aria-label="Loading Sshree Shyam Rasoi Special">
+    <div class="loader-wrap">
+      <div class="loader-orbit"><div class="loader-logo" aria-hidden="true">श्री</div></div>
+      <div>
+        <div class="loader-name">Sshree Shyam Rasoi Special</div>
+        <div class="loader-sub">Shuddh · Swaad · Sukoon</div>
+      </div>
+      <div class="loader-line" aria-hidden="true"></div>
+    </div>
+  </div>
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="#home" aria-label="Sshree Shyam Rasoi Special home">
@@ -408,11 +518,21 @@
         <a href="#find-us">Find Us</a>
       </nav>
       <a class="nav-cta" href="https://wa.me/916260054546?text=Namaste%20Sshree%20Shyam%20Rasoi%20Special%2C%20I%20want%20to%20enquire%20about%20the%20menu%20and%20order." target="_blank" rel="noopener">Order on WhatsApp ↗</a>
-      <button class="menu-btn" aria-label="Open menu" onclick="document.getElementById('menu').scrollIntoView()">☰</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false">☰</button>
     </div>
   </header>
 
-  <main>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-close" id="mobileClose" aria-label="Close navigation">×</button>
+    <a href="#home">Home</a>
+    <a href="#story">Our Story</a>
+    <a href="#menu">Menu</a>
+    <a href="#experience">Why Us</a>
+    <a href="#find-us">Find Us</a>
+    <a class="small-action" href="https://wa.me/916260054546?text=Namaste%20Sshree%20Shyam%20Rasoi%20Special%2C%20I%20want%20to%20enquire%20about%20today%27s%20menu." target="_blank" rel="noopener">WhatsApp Order ↗</a>
+  </div>
+
+  <main id="main-content">
     <section class="hero" id="home">
       <div class="hero-media" aria-hidden="true">
         <div class="hero-slide"></div>
@@ -429,7 +549,7 @@
               <span class="line">Taste that feels</span>
               <span class="line">like <em>home.</em></span>
             </h1>
-            <p class="hero-copy">Comforting Indian flavours, Indori breakfast favourites and vrat-friendly classics — prepared with warmth for everyday cravings.</p>
+            <p class="hero-copy">Pure vegetarian North Indian comfort, Indori breakfast favourites and vrat-friendly classics — with quick ordering for Rau & Rajendra Nagar.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="https://wa.me/916260054546?text=Namaste%20Sshree%20Shyam%20Rasoi%20Special%2C%20I%20want%20to%20place%20an%20order." target="_blank" rel="noopener">Order / Enquire on WhatsApp</a>
               <a class="btn btn-ghost" href="#menu">Explore Menu ↓</a>
@@ -446,7 +566,7 @@
             <div class="hero-facts">
               <div class="fact"><small>Cuisine</small><strong>North Indian</strong></div>
               <div class="fact"><small>Local favourite</small><strong>Indori flavours</strong></div>
-              <div class="fact"><small>Service</small><strong>Home Delivery</strong></div>
+              <div class="fact"><small>Service</small><strong>Delivery / Takeaway</strong></div>
               <div class="fact"><small>Area</small><strong>Rau, Indore</strong></div>
             </div>
           </aside>
@@ -458,8 +578,8 @@
     <section class="section story" id="story">
       <div class="container story-grid">
         <div class="story-visual reveal">
-          <img class="story-img-main" loading="lazy" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1200&q=88" alt="Indian vegetarian curry served in a traditional bowl">
-          <img class="story-img-small" loading="lazy" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=88" alt="Fresh Indian snack">
+          <img class="story-img-main" loading="lazy" src="https://img.magicpin.com/9892553_store_images_3.webp" alt="Indian vegetarian curry served in a traditional bowl">
+          <img class="story-img-small" loading="lazy" src="https://img.magicpin.com/9892553_store_images_2.webp" alt="Fresh Indian snack">
           <div class="stamp">Pure Veg<br>made with<br>care</div>
         </div>
         <div class="reveal">
@@ -525,6 +645,15 @@
       </div>
     </section>
 
+    <section class="trust-strip" aria-label="Restaurant trust and ordering links">
+      <div class="container trust-grid">
+        <div class="trust-item"><small>Food</small><strong>100% Vegetarian</strong></div>
+        <div class="trust-item"><small>Online Menu</small><strong><a href="https://www.zomato.com/indore/sshree-shyam-rasoi-special-rau/order" target="_blank" rel="noopener">View on Zomato ↗</a></strong></div>
+        <div class="trust-item"><small>Delivery</small><strong><a href="https://www.swiggy.com/city/indore/sshree-shyam-rasoi-rau-and-rajendra-nagar-rest1371950" target="_blank" rel="noopener">Order on Swiggy ↗</a></strong></div>
+        <div class="trust-item"><small>Location</small><strong>Rau, Indore</strong></div>
+      </div>
+    </section>
+
     <section class="section experience" id="experience">
       <div class="container">
         <div class="experience-head reveal">
@@ -547,10 +676,10 @@
 
     <section class="gallery" aria-label="Food gallery">
       <div class="gallery-grid">
-        <figure><img loading="lazy" src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=1300&q=88" alt="Cinematic Indian vegetarian food spread"></figure>
-        <figure><img loading="lazy" src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=88" alt="Indian curry"></figure>
-        <figure><img loading="lazy" src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?auto=format&fit=crop&w=900&q=88" alt="Indian food served in a bowl"></figure>
-        <figure><img loading="lazy" src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=900&q=88" alt="Vegetarian Indian meal"></figure>
+        <figure><img loading="lazy" src="https://img.magicpin.com/9892553_store_images_3.webp" alt="Cinematic Indian vegetarian food spread"></figure>
+        <figure><img loading="lazy" src="https://img.magicpin.com/9892553_store_images_4.webp" alt="Indian curry"></figure>
+        <figure><img loading="lazy" src="https://img.magicpin.com/9892553_store_images_5.webp" alt="Indian food served in a bowl"></figure>
+        <figure><img loading="lazy" src="https://img.magicpin.com/9892553_store_images_0.webp" alt="Vegetarian Indian meal"></figure>
         <figure><img loading="lazy" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=88" alt="Indian snack"></figure>
       </div>
     </section>
@@ -565,6 +694,8 @@
         <div class="presence-list reveal">
           <a class="presence-item" href="https://www.google.com/maps/search/?api=1&query=Sshree+Shyam+Rasoi+Special+Rau+Indore" target="_blank" rel="noopener"><strong>Google Maps</strong><span>Directions & local discovery ↗</span></a>
           <a class="presence-item" href="https://www.zomato.com/indore/sshree-shyam-rasoi-special-rau" target="_blank" rel="noopener"><strong>Zomato</strong><span>Menu & delivery listing ↗</span></a>
+          <a class="presence-item" href="https://www.swiggy.com/city/indore/sshree-shyam-rasoi-rau-and-rajendra-nagar-rest1371950" target="_blank" rel="noopener"><strong>Swiggy</strong><span>Online ordering ↗</span></a>
+          <a class="presence-item" href="https://magicpin.in/Indore/Shramik-Colony/Restaurant/Sshree-Shyam-Rasoi-Special/store/20849a8" target="_blank" rel="noopener"><strong>Magicpin</strong><span>Photos & listing ↗</span></a>
           <a class="presence-item" href="tel:+916260054546"><strong>Direct Call</strong><span>+91 62600 54546 ↗</span></a>
           <a class="presence-item" href="https://wa.me/916260054546" target="_blank" rel="noopener"><strong>WhatsApp</strong><span>Fast enquiry & order ↗</span></a>
         </div>
@@ -578,7 +709,7 @@
           <h2 class="display">Come closer to the flavour.</h2>
           <div class="location-row"><small>Address</small><strong>132/B, Sai Sagar Colony, Rau, Indore, Madhya Pradesh 453331</strong></div>
           <div class="location-row"><small>Phone / WhatsApp</small><strong>+91 62600 54546</strong></div>
-          <div class="location-row"><small>Hours</small><strong>Daily · 9:00 AM – 9:00 PM</strong></div>
+          <div class="location-row"><small>Current Timings</small><strong>Please check Google/WhatsApp for today’s opening and delivery hours.</strong></div>
           <div class="location-actions">
             <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Sshree+Shyam+Rasoi+Special+Rau+Indore" target="_blank" rel="noopener">Get Directions ↗</a>
             <a class="btn btn-ghost" href="tel:+916260054546">Call Now</a>
@@ -615,6 +746,7 @@
           <a href="tel:+916260054546">Call</a>
           <a href="https://wa.me/916260054546" target="_blank" rel="noopener">WhatsApp</a>
           <a href="https://www.zomato.com/indore/sshree-shyam-rasoi-special-rau" target="_blank" rel="noopener">Zomato</a>
+          <a href="https://www.swiggy.com/city/indore/sshree-shyam-rasoi-rau-and-rajendra-nagar-rest1371950" target="_blank" rel="noopener">Swiggy</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -628,7 +760,23 @@
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.85 11.85 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.15 1.6 5.96L.05 24l6.27-1.64a11.9 11.9 0 0 0 5.74 1.46h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.19-1.23-6.18-3.47-8.42ZM12.07 21.8h-.01a9.84 9.84 0 0 1-5.02-1.37l-.36-.21-3.72.98.99-3.63-.24-.37a9.84 9.84 0 0 1-1.52-5.28c0-5.45 4.43-9.88 9.89-9.88 2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.89 6.99c-.01 5.45-4.44 9.88-9.88 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.91-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
   </a>
 
+  <nav class="mobile-dock" aria-label="Quick actions">
+    <a href="tel:+916260054546"><span><b>☎</b>Call</span></a>
+    <a href="#menu"><span><b>☰</b>Menu</span></a>
+    <a href="https://wa.me/916260054546?text=Namaste%2C%20please%20share%20today%27s%20menu%20and%20availability." target="_blank" rel="noopener"><span><b>◉</b>WhatsApp</span></a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Sshree+Shyam+Rasoi+Special+Rau+Indore" target="_blank" rel="noopener"><span><b>⌖</b>Directions</span></a>
+  </nav>
+
   <script>
+    const loader = document.getElementById('siteLoader');
+    const hideLoader = () => {
+      loader?.classList.add('hide');
+      document.body.classList.remove('loading');
+      setTimeout(()=>loader?.remove(), 800);
+    };
+    window.addEventListener('load', ()=>setTimeout(hideLoader, 900), {once:true});
+    setTimeout(hideLoader, 2800);
+
     const nav = document.getElementById('nav');
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
     onScroll();
@@ -643,6 +791,20 @@
       });
     }, {threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    const setMobileMenu = (open) => {
+      mobileMenu.classList.toggle('open', open);
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      menuBtn.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    menuBtn?.addEventListener('click', ()=>setMobileMenu(true));
+    mobileClose?.addEventListener('click', ()=>setMobileMenu(false));
+    mobileMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setMobileMenu(false)));
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') setMobileMenu(false); });
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
